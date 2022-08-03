@@ -1,13 +1,44 @@
-
-
 body {
     font-family: "open sans";
     flex-wrap: wrap;
     width: 100%;
+    background-color: rgb(56, 131, 131);
+}
+
+header {
+    background-color: rgb(238, 208, 101);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 2%;
+    border-radius: 25px;
+    margin-top: 2%;
+
 }
 
 h1 {
-    border: auto red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    text-shadow: 2px 2px 0px bisque;
+    align-content: center;
+    font-size: 3rem
+;;
+}
+
+#search {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#play-audio {
+    
+}
+
+#audio-preview {
+    padding-top: 0%;
+    justify-items: center;
+    box-shadow: 0 0 50px rgb(78, 78, 78);
+    border-radius: 25px;
+    margin-top: 3%;
 }
 
 .container {
@@ -24,26 +55,28 @@ h1 {
 .song-result {
     /* display: inline-block; */
     background-color: bisque;
+    border-radius: 20px;
     width: 10rem;
     padding: .5rem;
-    flex-direction: row;
+    /* flex-direction: row; */
     margin: 1%;
-    justify-items: center;
+    
+    /* justify-items: center; */
 }
 .artist-name {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 1rem;
     padding-bottom: 5%;
+    padding-top: 5%;
 
 }
 
 .album-cover {
-    
+    box-shadow: 0 0 50px rgb(78, 78, 78);
 }
 
 .song-title {
-    text-decoration: underline overline blueviolet;
-    text-decoration-thickness: .2rem;
+    
     font-weight: bold;
     padding: 5%;
 }

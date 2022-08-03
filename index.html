@@ -10,9 +10,26 @@
 </head>
 
 <body>
-  <h1>MyTunes</h1>
-  <input id="user-input" type="text">
-  <div id="results" class="container"></div>
+  <header>
+    <h1>MyTunes</h1>
+    <div id="search">
+      <form id="user-input" action="">
+      <label for="term">Search Term</label>
+      <input id="search-box" type="text" name="term">
+      <button>Search</button>
+      </form>
+      <div id="play-audio">
+      <audio id="audio-preview" controls autoplay></audio>
+    </div>
+    </div>
+    
+  </header>
+  
+</div>
+  <div id="results" class="container">
+  </div>
+
+  
 </body>
 
 </html>
