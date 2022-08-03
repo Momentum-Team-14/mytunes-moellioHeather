@@ -1,0 +1,54 @@
+
+
+body {
+    font-family: "open sans";
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+h1 {
+    border: auto red;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    justify-items: space-around;
+    padding: 1rem;
+    
+}
+
+.song-result {
+    /* display: inline-block; */
+    background-color: bisque;
+    width: 10rem;
+    padding: .5rem;
+    flex-direction: row;
+    margin: 1%;
+    justify-items: center;
+}
+.artist-name {
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding-bottom: 5%;
+
+}
+
+.album-cover {
+    
+}
+
+.song-title {
+    text-decoration: underline overline blueviolet;
+    text-decoration-thickness: .2rem;
+    font-weight: bold;
+    padding: 5%;
+}
+
+.album-name {
+ font-size: 1rem;
+ /* align-content: flex-end; */
+}
