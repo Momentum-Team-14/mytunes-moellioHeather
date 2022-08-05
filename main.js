@@ -1,26 +1,21 @@
 console.log('connected')
 
-// const userInput = document.querySelector("#user-input").value;
-// fetch("https://itunes.apple.com/search?term=${userInput}")
-//   .then((response) => response.json())
-//   .then((quote) => console.log(quote));
-// fetch(searchUrl, {
-//     method: 'GET',
-//     headers: {'Content-Type': 'application/json'}
-// })
-
-let container = document.querySelector('.container')
-let searchBaseUrl = "https://proxy-itunes-api.glitch.me//search?term="
+// naming areas of html to be used in js
+let resultsDiv = document.querySelector('#results')
 let userInput = document.querySelector('#user-input')
-const songPlay = document.querySelector('#audio-preview')
+let songPlay = document.querySelector('#audio-preview')
+let nowPlaying = document.querySelector('.now-playing')
 
+// naming API search parameters
+let searchBaseUrl = "https://proxy-itunes-api.glitch.me//search?term="
+
+// sets what happens when search is "submitted" -> calls getSearchResults which shows bring up the list of items from the search 
 userInput.addEventListener('submit', (event) => {
-    event.preventDefault()
-    let searchBox = document.querySelector('#search-box')
+    resultsDiv.innerText = '' // clear results of search when a new search is input
+    event.preventDefault() // prevents search from automatically happening
+    let searchBox = document.querySelector('#search-box') 
     let searchUrl =`${searchBaseUrl}${searchBox.value}`
-    console.log("search url", searchUrl)
-
-    getSearchResults(searchUrl) // searchUrl replaces url placeholder when calling the function
+    getSearchResults(searchUrl) // searchUrl replaces url placeholder when calling the function - getSearchResults - below
 })
 
 function getSearchResults(url) {
@@ -55,16 +50,19 @@ function getSearchResults(url) {
 function showTracks(songArray) {
 
     if (songArray.length > 0) {
+        
     
     for (let song of songArray) {
-        let songResultDiv = document.createElement('div')
+        let songResultDiv = document.createElement('div');
         songResultDiv.classList.add('song-result')
-        container.appendChild(songResultDiv) // appendChild puts songResultDiv into the container
+        resultsDiv.appendChild(songResultDiv) // appendChild puts songResultDiv into the resultsDiv
         
         // create event listener for songResultDiv
         songResultDiv.addEventListener('click', () => {
-            songPlay.src = song.previewUrl
-            songPlay.play()
+        songPlay.src = song.previewUrl
+        nowPlaying.innerText = `Now playing: "${song.trackName}" by ${song.artistName} (from the album ${song.collectionName})`
+        songPlay.volume=0.25
+        songPlay.play()
         })
         
         let songTitle = document.createElement('div')
@@ -83,16 +81,13 @@ function showTracks(songArray) {
         songArtist.innerText = "by " + `${song.artistName}`
         songResultDiv.appendChild(songArtist)
         
-        // let albumName = document.createElement('div')
-        // albumName.classList.add('album-name')
-        // albumName.innerText = `${song.collectionName}`
-        // songResultDiv.appendChild(albumName)
-        // onclick="this.classList.toggle('active');"
     } 
 } else {
-        let noResults = document.createElement('h1')
+        let noResults = document.createElement('div')
         noResults.classList.add('no-results')
-        noResults.innterText = "Nothing Found - please try again"
-        container.appendChild(noResults)
+        noResults.innerText = "Nothing Found - please try again!"
+        resultsDiv.appendChild(noResults)
+        console.log(noResults)
     }
 }
+
