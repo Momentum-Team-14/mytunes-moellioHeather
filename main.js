@@ -33,11 +33,9 @@ function getSearchResults(url) {
     }
 })
 // .then here receives parsed JSON
-// data is whatever the above code returns, in this case respnse.json
+// data is whatever the above code returns, in this case response.json
 .then(function (data) {
-    // console.log(showTracks)
-    // showTracks(showTracks)
-    // console.log(songs) 
+
     showTracks(data.results) // data.results replaces the placeholder songArray
 }).catch(error => {
     console.log(error)
@@ -49,20 +47,19 @@ function getSearchResults(url) {
 // function for showing song results
 function showTracks(songArray) {
 
-    if (songArray.length > 0) {
-        
+    if (songArray.length > 0) {   
     
     for (let song of songArray) {
-        let songResultDiv = document.createElement('div');
-        songResultDiv.classList.add('song-result')
-        resultsDiv.appendChild(songResultDiv) // appendChild puts songResultDiv into the resultsDiv
+        let songResultDiv = document.createElement('div') // creates div we are declaring songResultsDiv
+        songResultDiv.classList.add('song-result') // assigns class to the songResultsDiv
+        resultsDiv.appendChild(songResultDiv) // appendChild puts songResultDiv into resultsDiv
         
-        // create event listener for songResultDiv
+        // create event listener to "listen" for click to songResultsDiv item to play song and display song information
         songResultDiv.addEventListener('click', () => {
-        songPlay.src = song.previewUrl
-        nowPlaying.innerText = `Now playing: "${song.trackName}" by ${song.artistName} (from the album ${song.collectionName})`
-        songPlay.volume=0.25
-        songPlay.play()
+        songPlay.src = song.previewUrl // tells where to get the song information from the api to play
+        nowPlaying.innerText = `Now playing: "${song.trackName}" by ${song.artistName} (from the album ${song.collectionName})` // shows Now playing "" by "" from the album ""
+        songPlay.volume=0.25 // sets volume to 1/4, rather than full blast
+        songPlay.play() // plays song
         })
         
         let songTitle = document.createElement('div')
